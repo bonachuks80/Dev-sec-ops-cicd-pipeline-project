@@ -84,8 +84,8 @@ pipeline{
         stage('ZAP Dynamic Testing | DAST') {
             steps {
                 sshagent(['OWASP-Zap-Credential']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@52.15.76.151 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://18.188.2.41:30000/" || true'
-                                                        //JENKINS_PUBLIC_IP                                                      //EKS_WORKER_NODE_IP_ADDRESS:3000
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@52.15.76.151 "docker run -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://18.188.2.41:30000/" || true'
+                                                        //JENKINS_PUBLIC_IP          //Modified from owasp/zap2docker-stable                //EKS_WORKER_NODE_IP_ADDRESS:3000
                 //remove the ||true at the end if you are testing for real
                 }
             }
